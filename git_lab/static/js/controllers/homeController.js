@@ -18,8 +18,27 @@ function homeController($scope, $http, RepoFactory) {
         } else {
             this.description = true;
         }
-    }
+    };
 
+    $scope.privateRepos = function(filterData) {
+        if ($scope.isPrivate) {
+            //return repos which are private
+            return filterData.private == true;
+            // else return true for all topics
+        } else {
+            return true
+        }
+    };
+
+    $scope.publicRepos = function(filterData) {
+        if ($scope.isPublic) {
+            //return repos which are private
+            return filterData.private == false;
+            // else return true for all topics
+        } else {
+            return true
+        }
+    };
 
 
 }

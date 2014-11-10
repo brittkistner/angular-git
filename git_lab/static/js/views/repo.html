@@ -3,7 +3,7 @@
     <ul>
         <li>Description: {{ repo.description }}</li>
         <li>Forks Count: {{ repo.forks_count }}</li>
-        <li>Created On: {{ repo.created_at | }} by <a href="{{ repo.html_url }}">{{ repo.owner.login }}</a></li>
+        <li>Created On: {{ repo.created_at | date : 'mediumDate' }} by <a href="{{ repo.owner.html_url }}">{{ repo.owner.login }}</a></li>
     </ul>
 </div>
 
