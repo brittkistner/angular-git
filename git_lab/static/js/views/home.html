@@ -1,34 +1,35 @@
 <h2>Repository List</h2>
-<!--Allow filtering of your repo through text search and private/public repos.-->
 <div class="row">
     <div class="col-md-6">
-        <div ng-repeat="repo in repos | filter: searchText | filter: privateRepos | filter: publicRepos">
-            <!--Allow users to click into the repo to view specific information about the repo.-->
-            <div>
-                <a href="#/repos/{{ repo.owner.login }}/{{ repo.name }}">{{ repo.name }}</a>
-                <button data-ng-click="repoDescription();">See Description</button>
-                <!--Show and hide repo description-->
-                <div ng-show="description">
-                    <div ng-switch="repo">
-                        <div ng-switch-when="repo.description">
-                            <p>Repo Description: {{ repo.description }}</p>
+        <!--Allow filtering of your repo through text search and private/public repos.-->
+        <accordion>
+            <accordion-group heading="{{ repo.name }}" ng-repeat="repo in repos | filter: searchText | filter: privateRepos | filter: publicRepos" heading>
+                <div>
+                    <a href="#/repos/{{ repo.owner.login }}/{{ repo.name }}">{{ repo.name }}</a>
+                    <button data-ng-click="repoDescription();">See Description</button>
+                    <div ng-show="description">
+                        <div ng-switch="repo">
+                            <div ng-switch-when="repo.description">
+                                <p>Repo Description: {{ repo.description }}</p>
+                            </div>
+                            <div ng-switch-default>
+                                <p>Repo Description: No description available</p>
+                            </div>
                         </div>
-                        <div ng-switch-default>
-                            <p>Repo Description: No description available</p>
-                        </div>
-                    </div>
-                    <div ng-switch="repo">
-                        <div ng-if="repo.private == true">
-                           <p>Repo Type: Private</p>
-                        </div>
-                        <div ng-if="repo.private == false">
-                            <p>Repo Type: Public</p>
+                        <div ng-switch="repo">
+                            <div ng-if="repo.private == true">
+                               <p>Repo Type: Private</p>
+                            </div>
+                            <div ng-if="repo.private == false">
+                                <p>Repo Type: Public</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </accordion-group>
+        </accordion>
     </div>
+    <!-- Filter Inputs -->
     <div class="col-md-6">
         <span>Search Repositories</span>
         <input type="text" placeholder="Search Text" ng-model="searchText">
@@ -38,8 +39,3 @@
         <span>Only Private Repos</span><input type="checkbox" ng-model="isPrivate">
     </div>
 </div>
-
-
-
-
-<!--Get practice with UI Bootstrap - place list your repos in an accordian or a navigation bar on top.-->

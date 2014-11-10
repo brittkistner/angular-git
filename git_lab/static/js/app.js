@@ -1,4 +1,4 @@
-var gitlab = angular.module('gitlab', ['ngRoute']);
+var gitlab = angular.module('gitlab', ['ngRoute', 'ui.bootstrap']);
 
 gitlab.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
