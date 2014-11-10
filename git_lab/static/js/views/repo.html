@@ -1,1 +1,9 @@
-<h2>I'm the repo view</h2>
+<h2>{{ repo.name }}</h2>
+<div class="row">
+    <ul>
+        <li>Description: {{ repo.description }}</li>
+        <li>Forks Count: {{ repo.forks_count }}</li>
+        <li>Created On: {{ repo.created_at | }} by <a href="{{ repo.html_url }}">{{ repo.owner.login }}</a></li>
+    </ul>
+</div>
+

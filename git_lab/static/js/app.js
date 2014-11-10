@@ -6,7 +6,7 @@ gitlab.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/static/js/views/home.html',
             controller: homeController
         }).
-        when('/repo/:id', {
+        when('/repos/:owner/:repo', {
             templateUrl: '/static/js/views/repo.html',
             controller: repoController
         }).

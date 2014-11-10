@@ -5,9 +5,8 @@ gitlab.factory('RepoFactory', function($http){
            $http.get('proxy/user/repos')
                .success(function(repositories){
                    callback(repositories);
-                   $scope.repos = repositories;
                }).error(function(error) {
-                   console.log('there was an error');
+                   console.log('error');
                    console.log(error);
                });
        }

@@ -5,16 +5,27 @@
         <div ng-repeat="repo in repos | filter: searchText">
             <!--Allow users to click into the repo to view specific information about the repo.-->
             <div>
-                <a href="#/repo/{{ repo.id }}">{{ repo.name }}</a>
+                <a href="#/repos/{{ repo.owner.login }}/{{ repo.name }}">{{ repo.name }}</a>
                 <button data-ng-click="repoDescription();">See Description</button>
                 <!--Show and hide repo description-->
                 <div ng-show="description">
-                    <ul>
-                        <li>Repo Description: {{ repo.description }}</li>
-                        <li>Repo Type: {{ repo.type }}</li>
-                    </ul>
+                    <div ng-switch="repo">
+                        <div ng-switch-when="repo.description">
+                            <p>Repo Description: {{ repo.description }}</p>
+                        </div>
+                        <div ng-switch-default>
+                            <p>Repo Description: No description available</p>
+                        </div>
+                    </div>
+                    <div ng-switch="repo">
+                        <div ng-if="repo.private == true">
+                           <p>Repo Type: Private</p>
+                        </div>
+                        <div ng-if="repo.private == false">
+                            <p>Repo Type: Public</p>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -22,9 +33,9 @@
         <span>Search Repositories</span>
         <input type="text" placeholder="Search Text" ng-model="searchText">
         <br>
-        <span>Only Public Repos</span><input type="checkbox" ng-model="">
+        <!--<span>Only Public Repos</span><input type="checkbox" ng-model="">
         <br>
-        <span>Only Private Repos</span><input type="checkbox" ng-model="">
+        <span>Only Private Repos</span><input type="checkbox" ng-model="">-->
     </div>
 </div>
 

@@ -1,18 +1,8 @@
 function homeController($scope, $http, RepoFactory) {
     console.log('homeController');
-//    console.log($scope.repos);
 //    Get Repos
-//    $http.get('proxy/user/repos').
-//        success(function(res) {
-//            console.log('worked');
-//            console.log(res);
-//            $scope.repositories = res
-//        }).
-//        error(function(err) {
-//            console.log('got an error');
-//            console.log(err)
-//    });
     if (RepoFactory.repoList.length > 0) {
+        console.log('if');
         $scope.repos = RepoFactory.repoList;
     } else{
         RepoFactory.getRepos(function(repoResponse) {
@@ -22,12 +12,14 @@ function homeController($scope, $http, RepoFactory) {
         });
     }
 //   Repo Description
-//    $scope.repoDescription = function() {
-//        if (this.description){
-//            return false;
-//        } else {
-//            this.description = true;
-//        }
-//    }
+    $scope.repoDescription = function() {
+        if (this.description){
+            this.description = false;
+        } else {
+            this.description = true;
+        }
+    }
+
+
 
 }
