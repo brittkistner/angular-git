@@ -2,10 +2,12 @@ gitlab.factory('RepoFactory', function($http){
    return{
        repoList: [],
        getRepos: function(callback) {
-           $http.get('') //the route to github where I will retrieve the repos
-               .success(function(response){
-                   callback(response);
+           $http.get('proxy/user/repos')
+               .success(function(repositories){
+                   callback(repositories);
+                   $scope.repos = repositories;
                }).error(function(error) {
+                   console.log('there was an error');
                    console.log(error);
                });
        }
