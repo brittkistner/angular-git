@@ -1,0 +1,1 @@
+A simple github project viewer.  Uses angular.js and UI Bootstrap.  
